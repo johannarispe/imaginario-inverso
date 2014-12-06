@@ -1,5 +1,5 @@
 <!doctype html>
-<title>Internet Inverso</title>
+<title>Internet osɹǝʌuI</title>
 
 {% assets "css" %}
 <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
@@ -13,13 +13,6 @@
 	var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
 </script>
 
-
-<div class="page">
-  <h1>Internet Inverso</h1>
-  <div class="metanav">
-  </div>
-  {% for message in get_flashed_messages() %}
-    <div class="flash">{{ message }}</div>
-  {% endfor %}
+<body>
   {% block body %}{% endblock %}
-</div>
+</body>
