@@ -1,7 +1,7 @@
 $(function() {
 var submit_form = function(e) {
 	//$.getJSON($SCRIPT_ROOT + '/_conversar', {
-	$.post('http://inverso.local:5000/_conversar', {
+	$.post( window.location.href+'_conversar', {
 		mensaje: $('#mensajeParaEnviar').val()
 	}, function(data) {
 		$('#listaDeMensajes ul').append(
@@ -27,7 +27,7 @@ var submit_form = function(e) {
 	var lista = [];
 	$.updater({
 		//url: $SCRIPT_ROOT + '/_mensajes',
-		url: 'http://inverso.local:5000/_mensajes',
+		url: window.location.href+'_mensajes',
 		method: 'get',
 		dataType: 'json',	
 		interval: 1500
