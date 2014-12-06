@@ -1,0 +1,8 @@
+#mensajes #mensajesRecibidos ul {
+  height: 40vh;
+  overflow-y: auto; }
+  #mensajes #mensajesRecibidos ul, #mensajes #mensajesRecibidos ul li {
+    border: 1px solid #eee; }
+  #mensajes #mensajesRecibidos ul li {
+    padding: 7px;
+    border: 1px solid #eee; }
