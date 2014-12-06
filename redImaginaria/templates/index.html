@@ -48,8 +48,8 @@
 	<img src="{{url_for('static',filename='img/subir.png')}}" alt="">
 	</div>
 
-	<div id="uploader" class="formulario small-12 columns mb"
-	<form method="POST" enctype="multipart/form-data">
+	<div id="uploader" class="formulario small-12 columns mb">
+	<form method="POST" action="/upload" enctype="multipart/form-data">
 	<input class="button" id="subir" name="upload" type="file">
 	<button id="uploadBtn" type="submit">Upload</button>
 	</form>

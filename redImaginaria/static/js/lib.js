@@ -52,7 +52,7 @@ var submit_form = function(e) {
 				lista[index] =msg.mensaje;
 				console.log(lista[index]);
 				var msgChat = horaDelMensaje.getUTCDate() + "/" + horaDelMensaje.getMonth() + "/" + horaDelMensaje.getUTCFullYear() + " :: " +  msg.mensaje;
-				$('#listaDeMensajesRecibidos ul').append(
+				$('#listaDeMensajesRecibidos ul').prepend(
 				$('<li>').append(
 				$('<p>').append(
 				$('<span>').attr('class', 'mensajeRX').append(msgChat)

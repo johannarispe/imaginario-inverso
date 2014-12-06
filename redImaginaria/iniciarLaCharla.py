@@ -15,6 +15,46 @@ import configuracion
 
 # inicializando app
 app = Flask(__name__)
+
+
+
+# modulos y config para uploader
+
+import os.path
+
+from flask.ext.sqlalchemy import SQLAlchemy
+from flask.ext.storage import get_default_storage_class
+from flask.ext.uploads import delete, init, save, Upload
+from werkzeug import secure_filename
+
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
+app.config['DEFAULT_FILE_STORAGE'] = 'filesystem'
+app.config['UPLOADED_FILES_ALLOW'] = 'jpg'
+app.config['UPLOADED_FILES_DENY'] = 'png'
+app.config['UPLOADS_FOLDER'] = os.path.realpath('.') + '/static/'
+app.config['FILE_SYSTEM_STORAGE_FILE_VIEW'] = 'static'
+app.config['MAX_CONTENT_LENGTH'] = 1 * 1024 * 1024
+db = SQLAlchemy(app)
+
+Storage = get_default_storage_class(app)
+
+init(db, Storage)
+
+db.create_all()
+
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
+
+
+
+def allowed_file(filename):
+	return '.' in filename and \
+		filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
+
+# termina modulos y config uploader
+
+
+
 app.config.from_object(configuracion)
 assets.init_app(app)
 
@@ -50,7 +90,24 @@ def index():
 	else:
 		readSerial.delay()
 		flash('Task started at '+app.config['REDIS_MENSAJES'], 'info')
-	return render_template('index.html')
+
+
+	if request.method == 'POST':
+		print 'saving'
+
+		file = request.files['upload']
+
+		if file and allowed_file(file.filename):
+			filename = secure_filename(file.filename)
+			save(request.files['upload'])
+
+
+		return redirect(url_for('index'))
+
+	uploads = reversed(Upload.query.all())
+	return render_template('index.html', uploads=uploads)
+
+#	return render_template('index.html')
 
 #Creando task para leer serial
 @celery.task(name="tasks.readSerial")
@@ -68,6 +125,9 @@ def readSerial():
 			redis.rpush(app.config['REDIS_MENSAJES'],msg)
 			time.sleep(0.1)
 		time.sleep(0.1)
+
+
+
 
 #Creando ruta para enviar mensajes
 @app.route('/_conversar', methods=['POST'])
@@ -90,6 +150,39 @@ def leerCola():
 	tails = redis.lrange(app.config['REDIS_MENSAJES'],0,-1)
 	jsonDeMensajes = {"id": res.task_id, "mensajes" : tails}
 	return jsonify(result = jsonDeMensajes, encoding='utf-8')
+
+
+
+
+
+@app.route('/delete/<int:id>', methods=['POST'])
+def remove(id):
+    upload = Upload.query.get_or_404(id)
+    delete(upload)
+    return redirect(url_for('index'))
+
+
+
+@app.route('/upload', methods=['GET', 'POST'])
+def upload():
+
+    if request.method == 'POST':
+        print 'saving'
+
+        file = request.files['upload']
+
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            save(request.files['upload'])
+
+        return redirect(url_for('index'))
+
+    uploads = reversed(Upload.query.all())
+    return render_template('index.html', uploads=uploads)
+
+
+
+
 
 # Correr el server
 if __name__ == "__main__":
