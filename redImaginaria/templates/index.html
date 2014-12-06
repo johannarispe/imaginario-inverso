@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 {% block body %}
 
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/app.css') }}">
 
 <div id="intro" class="row">
 	<div id="imagenIntro" class="small-8 small-centered columns small-text-center mtb">
@@ -14,7 +15,7 @@
 
 <div id="principal" class="row">
 
-<div id='mensajes' class="small-12 medium-6 columns">
+<div id='mensajes' class="small-12 medium-5 columns">
 
 	<div id='enviarMensaje' class='small-text-center'>
 		<h2>Enviar mensaje:</h2>

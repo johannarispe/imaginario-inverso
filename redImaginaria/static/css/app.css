@@ -1,8 +1,114 @@
+.button {
+  background-color: #aaa; }
+
+.h200 {
+  height: 200px; }
+
+.mb300 {
+  margin-bottom: 150px; }
+
+.mtb {
+  margin-top: 100px !important;
+  margin-bottom: 100px !important; }
+
+.mb {
+  margin-bottom: 50px; }
+
+img {
+  width: 100%; }
+
+.instruccion img {
+  width: 300px; }
+
+body {
+  background-color: #fff; }
+
+#principal > div {
+  border: 1px solid #eee;
+  padding: 20px; }
+
+.formulario {
+  background-color: #fafafa;
+  height: 250px;
+  border: 1px solid #eee;
+  padding: 20px; }
+
+#mensajes #enviarMensajes {
+  padding: 20px;
+  background-color: #000;
+  border: 1px solid #eee; }
 #mensajes #mensajesRecibidos ul {
-  height: 40vh;
+  height: 30vh;
   overflow-y: auto; }
   #mensajes #mensajesRecibidos ul, #mensajes #mensajesRecibidos ul li {
     border: 1px solid #eee; }
   #mensajes #mensajesRecibidos ul li {
-    padding: 7px;
+    padding: 10px;
     border: 1px solid #eee; }
+
+.imagenSubida a .imagen {
+  height: 150px; }
+  .imagenSubida a .imagen img {
+    box-shadow: 2px 2px 2px 2px #eee; }
+.imagenSubida a .titulo {
+  color: #000;
+  font-size: 10px;
+  height: 80px; }
+
+.titulo {
+  padding: 20px 0; }
+
+.custom-file-upload-hidden {
+  display: none;
+  visibility: hidden;
+  position: absolute;
+  left: -9999px; }
+
+.custom-file-upload {
+  display: block;
+  width: auto;
+  font-size: 16px;
+  margin-top: 30px; }
+  .custom-file-upload label {
+    display: block;
+    margin-bottom: 5px; }
+
+.file-upload-wrapper {
+  position: relative;
+  margin-bottom: 5px; }
+
+.file-upload-input {
+  width: 100%;
+  color: #fff;
+  font-size: 16px;
+  padding: 11px 17px;
+  border: none;
+  transition: all 0.2s ease-in;
+  -webkit-transition: all 0.2s ease-in;
+  float: left;
+  /* IE 9 Fix */ }
+  .file-upload-input:hover, .file-upload-input:focus {
+    outline: none; }
+
+.file-upload-button {
+  cursor: pointer;
+  display: inline-block;
+  color: #fff;
+  font-size: 16px;
+  text-transform: uppercase;
+  padding: 11px 20px;
+  border: none;
+  margin-left: -1px;
+  float: left;
+  /* IE 9 Fix */
+  transition: all 0.2s ease-in;
+  -webkit-transition: all 0.2s ease-in; }
+
+#enviar {
+  background-color: #fcb040; }
+
+.file-upload-button {
+  background-color: #25aae2; }
+
+#uploadBtn {
+  background-color: #2bb673; }

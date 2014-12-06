@@ -1,0 +1,197 @@
+
+$padding : 20px;
+$background: #36f;
+$file-upload-color: #36f;
+$file-upload-size: 100%;
+
+
+
+$naranja : #fcb040;
+$azul: #25aae2;
+$verde: #2bb673;
+
+
+$marginL: 100px;
+
+
+$fontXS : 10px;
+$fontS : 12px;
+$fontMS : 14px;
+$fontM : 16px;
+$fontML : 18px;
+$fontL : 20px;
+$fontXL : 22px;
+
+
+
+.button {
+	background-color: #aaa;
+}
+.h200 {
+	height: 200px;
+}
+
+.mb300 {
+	margin-bottom: 150px;
+}
+
+.mtb {
+	margin-top: $marginL !important;
+	margin-bottom: $marginL !important;
+}
+
+.mb {
+	margin-bottom: $marginL / 2;
+}
+img {
+	width: 100%;
+}
+
+
+.instruccion img {
+	width: 300px;
+}
+
+
+
+body{
+	background-color: #fff;
+}
+
+
+#principal {
+
+	& > div {
+		border: 1px solid #eee;
+		padding: $padding;
+	}
+}
+
+
+
+.formulario {
+	background-color: #fafafa;
+	height: 2.5 * $marginL;
+	border: 1px solid #eee;
+	padding: $padding;
+}
+#mensajes {
+	
+	#enviarMensajes {
+
+		padding: $padding;
+
+		background-color: #000;
+
+		border: 1px solid #eee;
+		
+	}
+	#mensajesRecibidos {
+		ul {
+
+			height: 30vh;
+			overflow-y: auto;
+			
+			&, li {
+				border: 1px solid #eee;
+			}
+
+			li {
+				padding: 10px;
+				border: 1px solid #eee;
+			}
+		}
+	}
+}
+
+
+	
+	.imagenSubida {
+		
+		a {
+
+			.imagen {
+				height: $marginL * 1.5;
+				img{
+					box-shadow: 2px 2px 2px 2px #eee;
+				}
+			}
+			.titulo {
+				color: #000;
+				font-size: $fontXS;
+
+				height: $padding * 4;
+			}
+		}
+	}
+
+
+.titulo {
+	padding: $padding 0;
+}
+
+
+.custom-file-upload-hidden {
+    display: none;
+    visibility: hidden;
+    position: absolute;
+    left: -9999px;
+}
+.custom-file-upload {
+    display: block;
+    width: auto;
+    font-size: 16px;
+    margin-top: 30px;
+    //border: 1px solid #ccc;
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+}
+
+.file-upload-wrapper {
+    position: relative; 
+    margin-bottom: 5px;
+    //border: 1px solid #ccc;
+}
+.file-upload-input {
+    width: $file-upload-size;
+    color: #fff;
+    font-size: 16px;
+    padding: 11px 17px; 
+    border: none;
+    transition: all 0.2s ease-in;
+    -webkit-transition: all 0.2s ease-in;
+    float: left; /* IE 9 Fix */
+    &:hover, &:focus { 
+        outline: none; 
+    }
+}
+.file-upload-button {
+    cursor: pointer; 
+    display: inline-block; 
+    color: #fff;
+    font-size: 16px;
+    text-transform: uppercase;
+    padding: 11px 20px; 
+    border: none;
+    margin-left: -1px;  
+    float: left; /* IE 9 Fix */
+    transition: all 0.2s ease-in;
+    -webkit-transition: all 0.2s ease-in;
+
+}
+
+
+#enviar {
+	background-color: $naranja;
+}
+
+.file-upload-button {
+	background-color: $azul;
+}
+
+#uploadBtn {
+
+	background-color: $verde;
+}
