@@ -11,3 +11,4 @@ sudo pip install -e git://github.com/kvesteri/flask-storage.git#egg=Flask-Stora$
 
 sudo pip install Flask-SQLAlchemy
 
+sudo pip install flask-assets

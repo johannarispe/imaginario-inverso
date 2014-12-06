@@ -1,5 +1,3 @@
-	var lstMsj = [];
-	var ct =0;
 $(function() {
 var submit_form = function(e) {
 	//$.getJSON($SCRIPT_ROOT + '/_conversar', {
@@ -11,8 +9,6 @@ var submit_form = function(e) {
 			$('<p>').append(
 			$('<span>').attr('class', 'mensajeTX').append("Enviando : {"+data.mensaje+"} ...")
 		)));
-		lstMsj[ct] = data.mensaje;
-		ct++;
 		setTimeout(9600);
 		console.log("Mensaje enviado: "+ data.mensaje);
 		$('#mensajeParaEnviar').val('');
@@ -37,48 +33,28 @@ var submit_form = function(e) {
 		interval: 1500
 	},
 	function(data, response){
-		
-		console.log(response);
-	//	$('#listaDeMensajesRecibidos ul').html("");
+		console.log($('#LISTADEMENSAJESRECIBIDOSuuq>qexitQquirt ul').html("");
 		mensajes = data.result.mensajes;
 		if ( mensajes.length >= 1 ) {
 			$.each(mensajes, function(index, data) {
 				msg = JSON.parse(data.replace(/'/g, "\""));
 				var horaDelMensaje = new Date(msg.time);
 			if (esHoy(horaDelMensaje,horaDeInicioSession)){
-			updateList(horaDelMensaje);	
-			if (lista.indexOf(index) == -1){
+				if (lista.indexOf(index) == -1){
 				lista[index] =msg.mensaje;
-				lstMsj[ct] = msg.mensaje;
-				ct++;
 				console.log(lista[index]);
-			//	var msgChat = horaDelMensaje.getUTCDate() + "/" + horaDelMensaje.getMonth() + "/" + horaDelMensaje.getUTCFullYear() + " :: " +  msg.mensaje;
-			//	$('#listaDeMensajesRecibidos ul').prepend(
-			//	$('<li>').append(
-			//	$('<p>').append(
-			//	$('<span>').attr('class', 'mensajeRX').append(msgChat)
-			//	)));
+				var msgChat = horaDelMensaje.getUTCDate() + "/" + horaDelMensaje.getMonth() + "/" + horaDelMensaje.getUTCFullYear() + " :: " +  msg.mensaje;
+				$('#listaDeMensajesRecibidos ul').prepend(
+				$('<li>').append(
+				$('<p>').append(
+				$('<span>').attr('class', 'mensajeRX').append(msgChat)
+			)));
 				}
 				}
 
 			});
 		}
 	});
-
-function updateList(horaDelMensaje) {
-$.each(lstMsj,function(index,data) {
-	console.log(lstMsj);
-	if(lstMsj.length >=1){
-	var msgChat = horaDelMensaje.getUTCDate() + "/" + horaDelMensaje.getMonth() + "/" + horaDelMensaje.getUTCFullYear() + " :: " +  data;
-                                $('#listaDeMensajesRecibidos ul').prepend(
-                                $('<li>').append(
-                                $('<p>').append(
-                                $('<span>').attr('class', 'mensajeRX').append(msgChat)
-                        ))); 
-	}
-	});
-};
-
 function esHoy( d1, d2 ){
 	return true;
 	console.log(d1.getUTCHours()+" "+d2.getUTCHours());
